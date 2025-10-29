@@ -31,14 +31,14 @@
 #' @export
 #'
 bom_forecasts <- function(geohash,
-                          freq = c("daily", "3-hourly"),
+                          freq = c("daily", "hourly"),
                           raw = FALSE,
                           ep = endpoint) {
 
     # Sanity checks and formatting
-    freq <- match.arg(freq, c("daily", "3-hourly"))
+    freq <- match.arg(freq, c("daily", "hourly"))
     tz <- bom_location_info(geohash)$data$timezone
-    if (freq == "3-hourly")
+    if (freq == "hourly")
         geohash <- stringr::str_sub(geohash, 1, nchar(geohash) - 1)
 
     # API call
